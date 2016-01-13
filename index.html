@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Writing Good Tests</title>
+
+		<meta name="description" content="A presentation on the value of unit testing">
+		<meta name="author" content="Nicole Pellicena Tredway">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Writing Good Tests</h1>
+					<h3>Testing Java with JUnit</h3>
+					<p>
+						<small>Created by <a href="#">Nicole Pellicena</a></small>
+					</p>
+				</section>
+
+				<section data-background="#b5533c">
+					<h2>Benefits of writing good tests</h2>
+					<p class="fragment">Test the feature you've built.</p>
+					<p class="fragment">Refactoring.</p>
+					<p class="fragment">Living documentation.</p>
+					<p class="fragment">Easier integration testing.</p>
+					<p class="fragment">Third-party code changes.</p>
+					<p class="fragment">Legacy code.</p>
+
+					<aside class="notes">
+						Benefits of writing good tests.
+					</aside>
+				</section>
+
+				<section data-background="#b5533c">
+					<h2>Cons of writing bad tests</h2>
+					<p class="fragment">Make little sense to someone else.</p>
+					<p class="fragment">Fail sporadically.</p>
+					<p class="fragment">Don't prove anything worthwhile.</p>
+					<p class="fragment">Don't sufficiently cover the code.</p>
+					<p class="fragment">Coupled too tightly to implementation.</p>
+					<p class="fragment">Convoluted tests that jump through too many setup hoops.</p>
+
+					<aside class="notes">
+						Pitfalls of writing bad tests.
+					</aside>
+				</section>
+
+				<section data-background="#b5533c">
+					<h2>Levels of testing</h2>
+					<p class="fragment">Acceptance:
+						<span class="fragment">Does the whole system work?</span>
+					</p>
+					<p class="fragment">Integration:
+						<span class="fragment">Does our code work against code we can't change?</span>
+					</p>
+					<p class="fragment">Unit:
+						<span class="fragment">Do our objects do the right thing?</span></br>
+						<span class="fragment">Are they convenient to work with?</span>
+					</p>
+
+					<aside class="notes">
+						Levels of testing.
+					</aside>
+				</section>
+
+				<!-- Organising Tests -->
+				<section data-background="#b5533c">
+					<section>
+						<h2>Organising Tests</h2>
+						<p><span class="fragment">Arrange.</span> <span class="fragment">Act.</span> <span class="fragment">Assert.</span></p>
+						<br>
+						<a href="#" class="navigate-down">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h2>Arrange.</h2>
+						<p>Set the test system state by creating objects, interacting with them, calling other APIs, and so on.</p>
+					</section>
+					<section>
+						<h2>Act.</h2>
+						<p>Exercise the code you want to test, usually by calling a single method.</p>
+					</section>
+					<section>
+						<h2>Assert.</h2>
+						<p>Verify the code behaved the way you expected. </p>
+						<p>This can be checking the return value of the exercised code,
+							or the new state of any objects involved. It can also be verifying the interactions between the tested
+							and other objects took place.</p>
+						<br>
+						<a href="#/2">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+						</a>
+					</section>
+				</section>
+
+				<section>
+					<h2>Test Behaviour rather than Methods</h2>
+					<p>Focus on the behaviour of your class, not on testing the individual methods.</p>
+				</section>
+
+				<section>
+					<h2>Focused, Single-Purpose Tests</h2>
+					<p>
+						Sometimes you might be tempted to combine tests to avoid repeated setup, but doing this loses the benefit
+						of test isolation that JUnit provides.
+					</p>
+					<p class="fragment">Immediately know what behaviour went wrong when an assertion fails.</p>
+					<p class="fragment">Minimise the amount of sleuthing needed to decipher a failed test.</p>
+					<p class="fragment">Ensure all cases get executed.</p>
+				</section>
+
+				<section>
+					<h2>Tests as Documentation</h2>
+					<p>
+
+					</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section>
+					<section>
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment current-visible">current-visible</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						reveal.js comes with a few themes built in: <br>
+						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
+					</p>
+				</section>
+
+				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
+					<h2>Background Transitions</h2>
+					<p>
+						You can override background transitions per-slide.
+					</p>
+					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code class="hljs" data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+				<section>
+					<h2>Marvelous List</h2>
+					<ul>
+						<li>No order here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+						<li>Or here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Clever Quotes</h2>
+					<p>
+						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
+					</p>
+					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
+						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
+					</blockquote>
+				</section>
+
+				<section>
+					<h2>Intergalactic Interconnections</h2>
+					<p>
+						You can link between slides internally,
+						<a href="#/2/3">like this</a>.
+					</p>
+				</section>
+
+				<section>
+					<h2>Speaker View</h2>
+					<p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
+					<p>Press the <em>S</em> key to try it out.</p>
+
+					<aside class="notes">
+						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+					</aside>
+				</section>
+
+				<section>
+					<h2>Further Reading</h2>
+					<ul>
+						<li><a href="#">Growing Object Oriented Software, Guided by Tests</a></li>
+						<li><a href="#">Pragmatic Unit Testing in Java 8 with JUnit</a></li>
+						<li><a href="#">#</a></li>
+						<li><a href="#">#</a></li>
+						<li><a href="#">#</a></li>
+					</ul>
+				</section>
+
+				<section style="text-align: left;">
+					<h1>THE END</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
